@@ -17,7 +17,7 @@ public class Main {
         JsonFileParser jsonFileParser = new JsonFileParser();
         JsonUrlParser jsonUrlParser = new JsonUrlParser();
 
-        // IpDto ip = jsonUrlParser.parseFromLink(URL);
+        //IpDto ip = jsonUrlParser.parseFromLink(URL);
         IpDto ip = jsonFileParser.parseFromLink(PATH_TO_FILE);
         WriteFile.writeJsonObject(PATH, ip.getIp());
 
