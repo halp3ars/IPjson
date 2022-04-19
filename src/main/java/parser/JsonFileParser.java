@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 
 public class JsonFileParser implements ParseStrategy {
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     @Override
     public IpDto parseFromLink(String link) throws IOException {

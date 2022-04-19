@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class JsonUrlParser implements ParseStrategy {
 
-    private static Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     @Override
     public IpDto parseFromLink(String link) throws IOException {
