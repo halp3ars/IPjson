@@ -1,24 +1,13 @@
-import parser.JsonFileParser;
-import dto.IpDto;
-import parser.JsonUrlParser;
-import writer.WriteFile;
+import parser.ParseConfiguration;
 
 import java.io.IOException;
 
 public class Main {
 
-    private static JsonFileParser jsonFileParser = new JsonFileParser();
-    private static JsonUrlParser jsonUrlParser = new JsonUrlParser();
+    private static final String TARGET_FILE = "/Users/halpears/Desktop/ip-info.txt";
+    private static final ParseConfiguration PARSE_CONFIGURATION = new ParseConfiguration();
 
     public static void main(String[] args) throws IOException {
-
-        final String URL = "https://api.ipify.org/?format=json";
-        final String PATH_TO_FILE = "/Users/halpears/Desktop/test.txt";
-        final String PATH = "/Users/halpears/Desktop/ip-info.txt";
-
-        //IpDto ip = jsonUrlParser.parseFromLink(URL);
-        IpDto ip = jsonFileParser.parseFromLink(PATH_TO_FILE);
-        WriteFile.writeJsonObject(PATH, ip.getIp());
-
+        PARSE_CONFIGURATION.parseWay(TARGET_FILE);
     }
 }

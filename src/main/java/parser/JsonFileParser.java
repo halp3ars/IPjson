@@ -10,11 +10,12 @@ import java.nio.file.Paths;
 
 public class JsonFileParser implements ParseStrategy {
 
-    private final Gson gson = new Gson();
+    private final Gson GSON = new Gson();
+    final String SOURCE_FILE = "/Users/halpears/Desktop/test.txt";
 
     @Override
-    public IpDto parseFromLink(String link) throws IOException {
-        Reader reader = Files.newBufferedReader(Paths.get(link));
-        return gson.fromJson(reader, IpDto.class);
+    public IpDto parseFromLink() throws IOException {
+        Reader reader = Files.newBufferedReader(Paths.get(SOURCE_FILE));
+        return GSON.fromJson(reader, IpDto.class);
     }
 }

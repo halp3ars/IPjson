@@ -10,11 +10,15 @@ import java.io.IOException;
 
 public class JsonUrlParser implements ParseStrategy {
 
-    private final Gson gson = new Gson();
+    private final Gson GSON = new Gson();
+    final String URL = "https://api.ipify.org/?format=json";
 
     @Override
-    public IpDto parseFromLink(String link) throws IOException {
-        Document response = Jsoup.connect(link).ignoreContentType(true).get();
-        return gson.fromJson(response.text(), IpDto.class);
+    public IpDto parseFromLink() throws IOException {
+
+        Document response = Jsoup.connect(URL).ignoreContentType(true).get();
+        return GSON.fromJson(response.text(), IpDto.class);
+
+
     }
 }
