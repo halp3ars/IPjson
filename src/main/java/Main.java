@@ -9,18 +9,19 @@ import java.io.IOException;
 public class Main {
 
     private static final String TARGET_FILE = "/Users/halpears/Desktop/ip-info.txt";
+    public static IpDto ipDto = new IpDto();
 
     public static void main(String[] args) throws IOException {
+        ParseStrategy strategy;
         if (args[0].equals("url")) {
-            ParseStrategy strategy = new JsonUrlParser();
-            IpDto ipDto = strategy.parseFromLink();
-            WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
+            strategy = new JsonUrlParser();
+            ipDto = strategy.parseFromLink();
         } else if (args[0].equals("file")) {
-            ParseStrategy strategy = new JsonFileParser();
-            IpDto ipDto = strategy.parseFromLink();
-            WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
+            strategy = new JsonFileParser();
+            ipDto = strategy.parseFromLink();
         } else {
             System.out.println("Strategy not chosen");
         }
+        WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
     }
 }
