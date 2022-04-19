@@ -11,7 +11,7 @@ import java.io.IOException;
 public class JsonUrlParser implements ParseStrategy {
 
     private final Gson GSON = new Gson();
-    final String URL = "https://api.ipify.org/?format=json";
+    private final String URL = "https://api.ipify.org/?format=json";
 
     @Override
     public IpDto parseFromLink() throws IOException {

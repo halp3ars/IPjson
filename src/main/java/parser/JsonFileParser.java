@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 public class JsonFileParser implements ParseStrategy {
 
     private final Gson GSON = new Gson();
-    final String SOURCE_FILE = "/Users/halpears/Desktop/test.txt";
+    private final String SOURCE_FILE = "/Users/halpears/Desktop/test.txt";
 
     @Override
     public IpDto parseFromLink() throws IOException {
