@@ -3,7 +3,9 @@ import parser.JsonFileParser;
 import parser.JsonUrlParser;
 import parser.ParseStrategy;
 import writer.WriteFile;
+
 import java.io.IOException;
+import java.net.URL;
 
 public class Main {
 
@@ -11,19 +13,25 @@ public class Main {
     public static IpDto ipDto = new IpDto();
     public static ParseStrategy strategy;
 
+    public enum arguments {
+        FILE("file"), URL("url");
+        private String argument = null;
+        arguments(String argument) {
+            this.argument = argument;
+        }
+        public String getArgument() {
+            return argument;
+        }
+    }
     public static void main(String[] args) throws IOException {
-            if (args[0].equals("url")) {
-                strategy = new JsonUrlParser();
-                ipDto = strategy.parseFromLink();
-                WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
-
-            } else if (args[0].equals("file")) {
-                strategy = new JsonFileParser();
-                ipDto = strategy.parseFromLink();
-                WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
-
-            } else {
-                System.out.println("Strategy not correct, only 'file' or 'url'");
-            }
+        if (args[0].equals(arguments.FILE.getArgument())) {
+            strategy = new JsonFileParser();
+        } else if (args[0].equals(arguments.URL.getArgument())) {
+            strategy = new JsonUrlParser();
+        } else {
+            System.out.println("Strategy not correct, only 'file' or 'url'");
+        }
+        ipDto = strategy.parseFromLink();
+        WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
     }
 }
