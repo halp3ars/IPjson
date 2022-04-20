@@ -15,12 +15,15 @@ public class Main {
             if (args[0].equals("url")) {
                 strategy = new JsonUrlParser();
                 ipDto = strategy.parseFromLink();
+                WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
+
             } else if (args[0].equals("file")) {
                 strategy = new JsonFileParser();
                 ipDto = strategy.parseFromLink();
+                WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
+
             } else {
-                System.out.println("Strategy not chosen, only 'file' or 'url'");
+                System.out.println("Strategy not correct, only 'file' or 'url'");
             }
-            WriteFile.writeJsonObject(TARGET_FILE, ipDto.getIp());
     }
 }
