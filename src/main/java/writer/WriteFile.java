@@ -8,7 +8,6 @@ import java.nio.file.Path;
 
 public class WriteFile {
 
-
     public static void writeJsonObject(String path, String text) {
         try (BufferedWriter writer = Files.newBufferedWriter(Path.of(path), Charset.defaultCharset())) {
             writer.write(text);

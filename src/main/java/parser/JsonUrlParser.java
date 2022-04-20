@@ -15,10 +15,7 @@ public class JsonUrlParser implements ParseStrategy {
 
     @Override
     public IpDto parseFromLink() throws IOException {
-
         Document response = Jsoup.connect(URL).ignoreContentType(true).get();
         return GSON.fromJson(response.text(), IpDto.class);
-
-
     }
 }
