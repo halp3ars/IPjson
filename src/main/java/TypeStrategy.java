@@ -5,11 +5,10 @@ import parser.ParseStrategy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TypeConnection {
-    private final Map<String, ParseStrategy> STRATEGY_MAP;
+public class TypeStrategy {
+    private final Map<String, ParseStrategy> STRATEGY_MAP = new HashMap<>();
 
-    public TypeConnection() {
-        STRATEGY_MAP = new HashMap<String, ParseStrategy>();
+    public TypeStrategy() {
         STRATEGY_MAP.put("file", new JsonFileParser());
         STRATEGY_MAP.put("url", new JsonUrlParser());
     }
